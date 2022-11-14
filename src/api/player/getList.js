@@ -7,40 +7,6 @@ import Player from "../../db/model/player";
 // export default async (req, res) => {
 //   res.sendStatus(500);
 // }
-const players = {
-  "kofi mart":{
-    "name":"kofi mart",
-    "position":"midfielder",
-    "playerSkills":[
-      {
-        "skill":"defense",
-        "value":60
-      },
-      {
-        "skill":"speed",
-        "value":80
-      }
-    ]
-  },
-  "Alfred Map":{
-    "name":"Alfred Map",
-    "position":"defender",
-    "playerSkills":[
-      {
-        "skill":"attack",
-        "value":70
-      },
-      {
-        "skill":"strength",
-        "skill":"stamina",
-        "value":80
-      }
-    ]
-  },
-  "message":"Invalid for position: midfielder1"
-  
-}
-
 app.get( "/all",async (req,res)=>{
  
  try {
@@ -59,9 +25,9 @@ export default async ('/:player',async (req,res) => {
    
     const currentPlayer = await Player.findByPk(player);
     return res.status(200).send(currentPlayer)
-
 }
 catch(err){
 res.sendStatus(500);
+next(err)
 }
 })
